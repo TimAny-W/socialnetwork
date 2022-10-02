@@ -1,0 +1,15 @@
+{% extends 'layout_with_user.html' %}
+{% block title %}Домашняя страница{% endblock %}
+{% block content %}
+       <form action="{% url 'home' %}">
+            <input type="text" name="search" class="search_" placeholder="Search here!" >
+            <input type="submit" name="submit" class="submit" value="Search">
+    	</form>
+		<p>
+			{{ user }}
+			<a href="{{ media_url }}{{ user.img }}"><img src="{{ media_url }}{{ user.img }}" width="150" height="150"></a>
+		</p>
+		<form>
+			<p style="text-align: center;">Тут по центру должны быть посты</p>
+		</form>
+{% endblock %}

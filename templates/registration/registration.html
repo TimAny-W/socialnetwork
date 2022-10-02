@@ -1,0 +1,9 @@
+{% extends 'clean_layout.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<form method="post">
+    {{ form }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create my account"></p>
+</form>
+{% endblock %}

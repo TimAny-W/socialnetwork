@@ -1,0 +1,6 @@
+{% extends 'clean_layout.html' %}
+{% block title %}Профиль пользователя {{ user_ }}{% endblock %}
+{% block content %}
+{{ user_ }}
+<p><a href="{{ media_url }}{{ user_.img }}"><img src="{{ media_url }}{{ user_.img }}" width="150" height="150"></a></p>
+{% endblock %}

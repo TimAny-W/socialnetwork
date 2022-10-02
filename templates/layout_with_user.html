@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% block content %}{% endblock %}
+<table align="left" border="1" cellpadding="1" cellspacing="1" style="width: 200px;">
+				<tbody>
+				    {% if request.user.is_authenticated %}
+						<tr>
+							<td>
+								<a href="{% url 'profile' user %}">Профиль</a>
+							</td>
+						</tr>
+					    <tr>
+							<td>
+								<a href="{% url 'logout' %}">Выйти из аккаунта</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td>
+								<a href="{% url 'login' %}">Логин</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="{% url 'register' %}">Регистрация</a>
+							</td>
+						</tr>
+					{% endif %}
+				</tbody>
+			</table>
+</body>
+</html>

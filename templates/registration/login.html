@@ -1,0 +1,13 @@
+{% extends 'clean_layout.html' %}
+{% block title %}Логин{% endblock %}
+
+{% block content %}
+<p style="text-align: center;">
+Логин</p>
+<p style="text-align: center;">
+<form action="{% url 'login' %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <p><input type="submit" value="Login"></p>
+</form>
+{% endblock %}
