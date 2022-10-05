@@ -6,10 +6,12 @@
             <input type="submit" name="submit" class="submit" value="Search">
     	</form>
 		<p>
-			{{ user }}
-			<a href="{{ media_url }}{{ user.img }}"><img src="{{ media_url }}{{ user.img }}" width="150" height="150"></a>
+			{% if request.user.is_authenticated %}
+				{{ user }}
+				<a href="{{ media_url }}{{ user.img }}"><img src="{{ media_url }}{{ user.img }}" width="150" height="150"></a>
+			{% else %}
+				Зарегистрируйтесь!
+			{% endif %}
 		</p>
-		<form>
-			<p style="text-align: center;">Тут по центру должны быть посты</p>
-		</form>
+
 {% endblock %}

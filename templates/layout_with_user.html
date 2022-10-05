@@ -11,7 +11,7 @@
 				    {% if request.user.is_authenticated %}
 						<tr>
 							<td>
-								<a href="{% url 'profile' user %}">Профиль</a>
+								<a href="{% url 'profile' user.id %}">Профиль</a>
 							</td>
 						</tr>
 					    <tr>
