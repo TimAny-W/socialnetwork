@@ -16,7 +16,6 @@ def home(request):
     if search_query:
         news = CustomUser.objects.filter(Q(first_name__iregex=search_query) | Q(last_name__iregex=search_query)) #search users
         print(CustomUser.objects.all())
-        print(CustomUser.objects.filter(username__iregex=search_query))
     else:
         news = 'Не найдено пользователей по таким параметрам'
     context = {'news': news}
