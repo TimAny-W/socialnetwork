@@ -1,17 +1,17 @@
 {% extends 'layout_with_user.html' %}
+
 {% block title %}Домашняя страница{% endblock %}
 {% block content %}
-       <form action="{% url 'home' %}">
+       <form action="{% url 'home' %}" class="search">
             <input type="text" name="search" class="search_" placeholder="Search here!" >
             <input type="submit" name="submit" class="submit" value="Search">
     	</form>
-		<p>
+		<dev class="user_img">
 			{% if request.user.is_authenticated %}
-				{{ user }}
-				<a href="{{ media_url }}{{ user.img }}"><img src="{{ media_url }}{{ user.img }}" width="150" height="150"></a>
+				<a href="{{ media_url }}{{ user.img }}" name="user_img" ><img src="{{ media_url }}{{ user.img }}" width="150" height="150"></a>
 			{% else %}
 				Зарегистрируйтесь!
 			{% endif %}
-		</p>
+		</dev>
 
 {% endblock %}
