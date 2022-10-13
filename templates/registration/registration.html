@@ -2,7 +2,13 @@
 {% block title %}Регистрация{% endblock %}
 {% block content %}
 <form method="post">
-    {{ form }}
+    Имя: {{ form.first_name }}<br>
+    Фамилия: {{ form.last_name }}<br>
+    Выберите аватарку: {{ form.img }}<br>
+    Введите email: {{ form.email }}<br>
+    Введите пароль: {{ form.password1 }}<br>
+    Повторите пароль: {{ form.password2 }}<br>
+
     {% csrf_token %}
     <p><input type="submit" value="Create my account"></p>
 </form>

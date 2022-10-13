@@ -11,5 +11,6 @@ class UserCreationForm(UserCreationForm):
     """Form class for registraton user"""
     class Meta(UserCreationForm.Meta):
         model = user
-        fields = ('email','img',)
+        fields = ('email','img','first_name','last_name',)
+        exclude = ['username',]
 

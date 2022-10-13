@@ -21,10 +21,10 @@ class Register(View):
         if form.is_valid():
             form.save()
 
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password1')
 
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=email, password=password)
             login(request, user)
 
             return redirect('home')
@@ -38,7 +38,7 @@ class Register(View):
 
 def profile_view(request, pk):
     """Def to view somebody profile"""
-    user = CustomUser.objects.get(username=pk)
+    user = CustomUser.objects.get(id=pk)
     info = {
         'user_': user,
     }
