@@ -9,15 +9,16 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class CustomUserManager(UserManager):
+    """
+    CustomUserManager
+    edited createsuperuser,to create with no username's field
+    """
 
     def _create_user(self, email, password, **extra_fields):
         """
-        Create and save a user with the given username, email, and password.
+        Create and save a user with the given email, and password.
         """
         email = self.normalize_email(email)
-        # Lookup the real model class from the global app registry so this
-        # manager method can be used in migrations. This is fine because
-        # managers are by definition working on the real model.
         GlobalUserModel = apps.get_model(
             self.model._meta.app_label, self.model._meta.object_name
         )
@@ -25,7 +26,9 @@ class CustomUserManager(UserManager):
         user.password = make_password(password)
         user.save(using=self._db)
         return user
-    def create_user(self,email=None, password=None, **extra_fields):
+
+    def create_user(self, email=None, password=None, **extra_fields):
+        """Creates simple user"""
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email=email, password=password, **extra_fields)
@@ -46,19 +49,24 @@ class CustomUserManager(UserManager):
 
 class CustomUser(AbstractUser, PermissionsMixin):
     """Custom user class
+       deleted username field
        added email field
+       added img field
        added first name fiedls
        added last name fields
     """
 
     username = None
 
-
     email = models.EmailField('Email address', unique=True, null=False)
     img = models.ImageField('Avatar', unique=False, default='user/default_avatar.png', upload_to=f'user/{email}/', )
 
     first_name = models.CharField('First name', unique=False, null=False, max_length=25)
     last_name = models.CharField('Last name', unique=False, null=False, max_length=25)
+
+    create_time = models.DateTimeField('date of create user',auto_now_add=True,null=True)
+
+    is_active = models.BooleanField('user activity',default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

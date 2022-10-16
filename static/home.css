@@ -1,19 +1,18 @@
+.user_img{
+     float: left;
+}
 .user_table{
     background: #F5F5F5;
-    float:left;
-    width:130px;
+    position: absolute;
+    width:150px;
+    top: 25% ;
     margin-top: 3px;
     border-radius: 2px;
 }
 body{
     background: #2c2c2c;
 }
-img{
-    background: #F5F5F5;
-    float: left;
-    top: 10px;
-    right: 30px;
-}
+
 form{
     float: right;
 }
