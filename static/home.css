@@ -1,12 +1,23 @@
 .user_table{
-    background: #F5F5F5;
     float:left;
     width:130px;
     margin-top: 3px;
     border-radius: 2px;
 }
-body{
-    background: #2c2c2c;
+body {
+    text-size-adjust: 100%;
+    word-wrap: break-word;
+    line-height: 1.28;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+body {
+    background: #303030;
+    color: rgb(214, 214, 214);
+    font: 13px/1.231 arial,helvetica,clean,sans-serif;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
 }
 img{
     background: #F5F5F5;
@@ -16,4 +27,19 @@ img{
 }
 form{
     float: right;
+}
+.friends{
+    position: relative;
+    float: right;
+    bottom: 150px;
+    right: 30px;
+    background: rgb(39, 39, 39);
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.5;
+  color: white;
 }

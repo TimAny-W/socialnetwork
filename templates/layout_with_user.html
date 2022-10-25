@@ -9,13 +9,13 @@
 </head>
 <body>
 <div class="user_table">
-				    {% if request.user.is_authenticated %}
-						<a href="{% url 'profile' user.id %}">Профиль</a><br>
-						<a href="{% url 'logout' %}">Выйти из аккаунта</a>
-					{% else %}
-						<a href="{% url 'login' %}">Логин</a><br>
-						<a href="{% url 'register' %}">Регистрация</a>
-					{% endif %}
+	{% if request.user.is_authenticated %}
+		<a href="{% url 'profile' user.id %}">Профиль</a><br>
+		<a href="{% url 'logout' %}">Выйти из аккаунта</a>
+	{% else %}
+		<a href="{% url 'login' %}">Логин</a><br>
+		<a href="{% url 'register' %}">Регистрация</a>
+	{% endif %}
 </div>
 {% block content %}{% endblock %}
 </body>

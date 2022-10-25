@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManager
@@ -25,7 +26,8 @@ class CustomUserManager(UserManager):
         user.password = make_password(password)
         user.save(using=self._db)
         return user
-    def create_user(self,email=None, password=None, **extra_fields):
+
+    def create_user(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email=email, password=password, **extra_fields)
@@ -47,18 +49,19 @@ class CustomUserManager(UserManager):
 class CustomUser(AbstractUser, PermissionsMixin):
     """Custom user class
        added email field
-       added first name fiedls
+       added first name fields
        added last name fields
     """
 
     username = None
 
-
     email = models.EmailField('Email address', unique=True, null=False)
-    img = models.ImageField('Avatar', unique=False, default='user/default_avatar.png', upload_to=f'user/{email}/', )
+    img = models.ImageField('Avatar', unique=False, default='default_avatar.png' )
 
     first_name = models.CharField('First name', unique=False, null=False, max_length=25)
     last_name = models.CharField('Last name', unique=False, null=False, max_length=25)
+
+    friends_list = models.ManyToManyField("CustomUser")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
