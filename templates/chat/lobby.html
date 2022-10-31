@@ -19,14 +19,14 @@
         const chatSocket = new WebSocket(url)
 
         chatSocket.onmessage = function(e){
-            let data = JSON.parse(e.data)
-            console.log('Data:', data)
+            let self = JSON.parse(e.self)
+            console.log('Data:', self)
 
-            if(data.type === 'chat'){
+            if(self.type === 'chat'){
                 let messages = document.getElementById('messages')
 
                 messages.insertAdjacentHTML('beforeend', `<div>
-                                        <p>${data.message}</p>
+                                        <p>${self.message}</p>
                                     </div>`)
             }
         }
